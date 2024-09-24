@@ -40,6 +40,7 @@ public abstract class IOffice implements IMainFrame {
 
     private void initControl() {
         control = new MainControl(this);
+
         control.setOffictToPicture(new IOfficeToPicture() {
             public Bitmap getBitmap(int componentWidth, int componentHeight) {
                 if (componentWidth == 0 || componentHeight == 0) {
@@ -251,7 +252,7 @@ public abstract class IOffice implements IMainFrame {
      * @return WPViewConstant.PAGE_ROOT or WPViewConstant.NORMAL_ROOT
      */
     public byte getWordDefaultView() {
-        return WPViewConstant.PRINT_ROOT;
+        return WPViewConstant.PAGE_ROOT;
     }
 
     /**

@@ -46,6 +46,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
 
 /**
  * Slide Draw Kit
@@ -391,17 +392,19 @@ public class SlideDrawKit {
         int alpha = 255;
         if (table.getAnimation() != null
                 && (alpha = table.getAnimation().getCurrentAnimationInfor().getAlpha()) != 255) {
-            final int LAYERS_FLAGS = Canvas.MATRIX_SAVE_FLAG |
-                    Canvas.CLIP_SAVE_FLAG
-                    | Canvas.HAS_ALPHA_LAYER_SAVE_FLAG
-                    | Canvas.FULL_COLOR_LAYER_SAVE_FLAG
-                    | Canvas.CLIP_TO_LAYER_SAVE_FLAG;
+//            final int LAYERS_FLAGS = Canvas.MATRIX_SAVE_FLAG |
+//                    Canvas.CLIP_SAVE_FLAG
+//                    | Canvas.HAS_ALPHA_LAYER_SAVE_FLAG
+//                    | Canvas.FULL_COLOR_LAYER_SAVE_FLAG
+//                    | Canvas.CLIP_TO_LAYER_SAVE_FLAG;
 
             Rectangle tableRect = table.getBounds();
             if (tableRect != null) {
-                canvas.saveLayerAlpha((tableRect.x * zoom), (tableRect.y * zoom),
-                        (tableRect.x + tableRect.width + 1) * zoom, (tableRect.height + tableRect.y + 1) * zoom,
-                        alpha, LAYERS_FLAGS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    canvas.saveLayerAlpha((tableRect.x * zoom), (tableRect.y * zoom),
+                            (tableRect.x + tableRect.width + 1) * zoom, (tableRect.height + tableRect.y + 1) * zoom,
+                            alpha);
+                }
             }
         }
         int count = table.getCellCount();

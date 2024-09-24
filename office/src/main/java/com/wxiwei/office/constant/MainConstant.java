@@ -115,6 +115,9 @@ public final class MainConstant {
     public static final float PIXEL_TO_TWIPS = PIXEL_TO_POINT * POINT_TO_TWIPS;
     //// default tab width, 21磅
     public static final float DEFAULT_TAB_WIDTH_PIXEL = DEFAULT_TAB_WIDTH_POINT * POINT_TO_PIXEL;
+    //添加默认tab width,0.75cm
+    public static final float DEFAULT_TAB_WIDTH_CM = 0.75f;
+    public static final float DEFAULT_TAB_WIDTH_PIXEL2 = DEFAULT_TAB_WIDTH_CM * MM_TO_POINT * POINT_TO_PIXEL;
 
 
     /* ============ 数据库中表名*/
